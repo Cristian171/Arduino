@@ -1,25 +1,18 @@
+
 // Configuración inicial
 void setup() {
-  // Se configura el pin LED_BUILTIN como salida
   pinMode(LED_BUILTIN, OUTPUT);
 }
 
-// Bucle principal
 void loop() {
-  // Variables estáticas para almacenar el tiempo anterior y el estado del LED
-  static uint32_t previousTime = 0; // Almacena el tiempo desde el último cambio de estado
-  static bool ledState = true; // Almacena el estado actual del LED (encendido o apagado)
+  static uint32_t previousTime = 0;
+  static bool ledState = true;
 
-  // Se obtiene el tiempo actual en milisegundos
   uint32_t currentTime = millis();
 
-  // Si ha pasado más de 100 milisegundos desde el último cambio de estado del LED
-  if( (currentTime - previousTime) > 100){
-    // Se actualiza el tiempo anterior con el valor actual
+  if( (currentTime - previousTime) > 1000){ // Cambio de 100 a 1000
     previousTime = currentTime;
-    // Se invierte el estado del LED
     ledState = !ledState;
-    // Se establece el estado del pin LED_BUILTIN según el estado del LED
     digitalWrite(LED_BUILTIN, ledState);
   }
 }
